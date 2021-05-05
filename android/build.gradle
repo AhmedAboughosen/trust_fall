@@ -5,10 +5,14 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'gradle.plugin.chrisney:enigma:1.0.0.8'
     }
 }
 
@@ -20,6 +24,12 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
+// Add Enigma Plugin
+apply plugin: 'com.chrisney.enigma'
+// Set Enigma options:
+enigma.enabled = true
+enigma.injectFakeKeys = true
+enigma.ignoredClasses = []
 
 android {
     compileSdkVersion 28

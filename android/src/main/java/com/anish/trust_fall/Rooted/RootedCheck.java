@@ -18,6 +18,7 @@ public class RootedCheck {
     public static boolean isJailBroken(Context context) {
         CheckApiVersion check;
 
+        System.out.println("isJailBroken");
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             check = new GreaterThan23();
         } else {
@@ -36,5 +37,8 @@ public class RootedCheck {
         }
         return rv;
     }
+
+
+
 }
 

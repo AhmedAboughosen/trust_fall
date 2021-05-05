@@ -1,12 +1,15 @@
 package com.anish.trust_fall.Rooted;
 
+import com.anish.trust_fall.TrustFallPlugin;
+
 import java.io.File;
 
 public class LessThan23 implements CheckApiVersion {
 
     @Override
     public boolean checkRooted() {
-        return canExecuteCommand("/system/xbin/which su") || isSuperuserPresent();
+
+        return canExecuteCommand(TrustFallPlugin.decodeString("L3N5c3RlbS94YmluL3doaWNoIHN1")) || isSuperuserPresent();
     }
 
     // executes a command on the system
@@ -14,7 +17,7 @@ public class LessThan23 implements CheckApiVersion {
         boolean executeResult;
         try {
             Process process = Runtime.getRuntime().exec(command);
-            if(process.waitFor() == 0) {
+            if (process.waitFor() == 0) {
                 executeResult = true;
             } else {
                 executeResult = false;
@@ -29,19 +32,19 @@ public class LessThan23 implements CheckApiVersion {
     private static boolean isSuperuserPresent() {
         // Check if /system/app/Superuser.apk is present
         String[] paths = {
-                "/system/app/Superuser.apk",
-                "/sbin/su",
-                "/system/bin/su",
-                "/system/xbin/su",
-                "/data/local/xbin/su",
-                "/data/local/bin/su",
-                "/system/sd/xbin/su",
-                "/system/bin/failsafe/su",
-                "/data/local/su"
+                "L3N5c3RlbS9hcHAvU3VwZXJ1c2VyLmFwaw==",
+                "L3NiaW4vc3U=",
+                "L3N5c3RlbS9iaW4vc3U=",
+                "L3N5c3RlbS94YmluL3N1",
+                "L2RhdGEvbG9jYWwveGJpbi9zdQ==",
+                "L2RhdGEvbG9jYWwvYmluL3N1",
+                "L3N5c3RlbS9zZC94YmluL3N1",
+                "L3N5c3RlbS9iaW4vZmFpbHNhZmUvc3U=",
+                "L2RhdGEvbG9jYWwvc3U="
         };
 
         for (String path : paths) {
-            if (new File(path).exists()) {
+            if (new File(TrustFallPlugin.decodeString(path)).exists()) {
                 return true;
             }
         }

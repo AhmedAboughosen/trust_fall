@@ -1,5 +1,7 @@
 package com.anish.trust_fall.Rooted;
 
+import com.anish.trust_fall.TrustFallPlugin;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -12,17 +14,17 @@ public class GreaterThan23 implements CheckApiVersion {
 
     private boolean checkRootMethod1() {
         String[] paths = {
-                "/system/app/Superuser.apk",
-                "/sbin/su",
-                "/system/bin/su",
-                "/system/xbin/su",
-                "/data/local/xbin/su",
-                "/data/local/bin/su",
-                "/system/sd/xbin/su",
-                "/system/bin/failsafe/su",
-                "/data/local/su"};
+                "L3N5c3RlbS9hcHAvU3VwZXJ1c2VyLmFwaw==",
+                "L3NiaW4vc3U=",
+                "L3N5c3RlbS9iaW4vc3U=",
+                "L3N5c3RlbS94YmluL3N1",
+                "L2RhdGEvbG9jYWwveGJpbi9zdQ==",
+                "L2RhdGEvbG9jYWwvYmluL3N1",
+                "L3N5c3RlbS9zZC94YmluL3N1",
+                "L3N5c3RlbS9iaW4vZmFpbHNhZmUvc3U=",
+                "L2RhdGEvbG9jYWwvc3U="};
         for (String path : paths) {
-            if (new File(path).exists()) return true;
+            if (new File(TrustFallPlugin.decodeString(path)).exists()) return true;
         }
         return false;
     }
@@ -30,7 +32,7 @@ public class GreaterThan23 implements CheckApiVersion {
     private boolean checkRootMethod2() {
         Process process = null;
         try {
-            process = Runtime.getRuntime().exec(new String[] { "/system/xbin/which", "su" });
+            process = Runtime.getRuntime().exec(new String[]{TrustFallPlugin.decodeString("L3N5c3RlbS94YmluL3doaWNo"), TrustFallPlugin.decodeString("c3U=")});
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
             if (in.readLine() != null) return true;
             return false;
